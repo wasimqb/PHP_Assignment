@@ -2,14 +2,14 @@
 session_start();
 $con = mysqli_connect("localhost","root","wasim121","demo") or die("Error " . mysqli_error($con));;
 
-  $uname = $_POST['uname'];
-  $pass = $_POST['pass'];
-  $email = $_POST['email'];
-  $addr = $_POST['addr'];
-  $fon = $_POST['fon'];
-  $name = $_POST['name'];
-  $dept = $_POST['dept'];
-  $location = $_POST['location'];
+  $uname = $_SESSION['uname'];
+  $pass = $_SESSION['pass'];
+  $email = $_SESSION['email'];
+  $addr = $_SESSION['addr'];
+  $fon = $_SESSION['fon'];
+  $name = $_SESSION['name'];
+  $dept = $_SESSION['dept'];
+  $location = $_SESSION['location'];
 
   // $sql3 = "select * from users where username='".$uname."'";
   // $result = mysqli_query($con,$sql3);
@@ -36,6 +36,9 @@ $con = mysqli_connect("localhost","root","wasim121","demo") or die("Error " . my
     mysqli_query($con,$sqlemp);
     echo "Registration Successful";
     header("location:index.php");
+
+    session_unset();
+    session_destroy();
 //   }
 // }
 

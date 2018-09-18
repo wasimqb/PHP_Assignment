@@ -9,6 +9,7 @@
 table {
     width:90%;
     table-layout: auto;
+    margin-top: -10%;
 }
 table, th, td {
     border: 1px solid black;
@@ -47,6 +48,7 @@ input[name="logout"]{
 </head>
 <body>
 <?php
+
 include('session.php');
 try {
 
@@ -60,10 +62,10 @@ try {
 }
 ?>
 <form action="logout.php" method="POST">
-	<input type="submit" name="logout" value="LOGOUT" style="float: right;">
+	<input type="submit" name="logout" value="LOGOUT" style="float: right; margin-top:-6%;">
 </form>
 	<button type="button" onclick="location.href='add_user.php'" style="margin-right:45%;
-    margin-top:-16%;
+    margin-top:-6%;
     color: black;
     position:absolute;">Add Employee</button>
 <center>

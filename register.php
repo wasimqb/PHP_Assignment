@@ -68,79 +68,57 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 
-<?php
-
-include 'validation_reg.php';
-?>
-
 <center>
 <h1>Register Form</h1>
 <p><span class="">* required field</span></p>
-<form method="post" class="form" action="<?php if(!empty($_POST['uname']) && !empty($dept) && !empty($name)
-&& !empty($email) && !empty($pass) &&!empty($addr) &&!empty($fon) &&!empty($location) 
-&& preg_match("/^[0-9]{10}$/", $fon) && filter_var($email, FILTER_VALIDATE_EMAIL) && !$row )
-        {
-          
-            // $_SESSION['uname'] = $uname;
-            // $_SESSION['pass'] = $pass;
-            // $_SESSION['email'] = $email;
-            // $_SESSION['addr'] = $addr;
-            // $_SESSION['fon'] =$fon;
-            // $_SESSION['name'] = $name;
-            // $_SESSION['dept'] = $dept;
-            // $_SESSION['location'] = $location;
-            echo "registration.php";
-        }
-        else {
-            echo "";
-        }?>" style="max-width:500px;margin:auto">
+<form method="post" class="form" action="validation_reg.php" style="max-width:500px;margin:auto">
 
 <div class="input-container">
   <i class="fa fa-user icon"></i>
-  <input class="input-field" type="text" name="name" placeholder="Name" value="<?php echo $name; ?>">
-  <span class="error">* <?php echo $nameErr; ?></span>
+  <input class="input-field" type="text" name="name" placeholder="Name" value="<?php echo $_SESSION['name']; ?>">
+  <span class="error">* <?php echo $_SESSION['nameErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-envelope icon"></i>
-  <input class="input-field" type="text" name="email" placeholder="Email" value="<?php echo $email; ?>">
-  <span class="error">* <?php echo $emailErr; ?></span>
+  <input class="input-field" type="text" name="email" placeholder="Email" value="<?php echo $_SESSION['email']; ?>">
+  <span class="error">* <?php echo $_SESSION['emailErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-user icon"></i>
-  <input class="input-field" type="text" name="uname" placeholder="Username" value="<?php echo $uname; ?>">
-  <span class="error">*<?php echo $unameErr; ?></span>
+  <input class="input-field" type="text" name="uname" placeholder="Username" value="<?php echo $_SESSION['uname']; ?>">
+  <span class="error">*<?php echo $_SESSION['unameErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-key icon"></i>
-  <input class="input-field" type="password" name="pass" placeholder="Password" value="<?php echo $pass; ?>">
-  <span class="error">*<?php echo $passErr; ?></span>
+  <input class="input-field" type="password" name="pass" placeholder="Password" value="<?php echo $_SESSION['pass']; ?>">
+  <span class="error">*<?php echo $_SESSION['passErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-address-card icon"></i>
-  <input class="input-field" type="text" name="addr" placeholder="Address" value="<?php echo $addr; ?>">
-  <span class="error">*<?php echo $addrErr; ?></span>
+  <input class="input-field" type="text" name="addr" placeholder="Address" value="<?php echo $_SESSION['addr']; ?>">
+  <span class="error">*<?php echo $_SESSION['addrErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-mobile-phone icon"></i>
-  <input class="input-field" type="text" name="fon" placeholder="Phone" value="<?php echo $fon; ?>">
-  <span class="error">*<?php echo $fonErr; ?></span>
+  <input class="input-field" type="text" name="fon" placeholder="Phone" value="<?php echo $_SESSION['fon']; ?>">
+  <span class="error">*<?php echo $_SESSION['fonErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-simplybuilt icon"></i>
-  <input class="input-field" type="text" name="dept" placeholder="Department" value="<?php echo $dept; ?>">
-  <span class="error">*<?php echo $deptErr; ?></span>
+  <input class="input-field" type="text" name="dept" placeholder="Department" value="<?php echo $_SESSION['dept']; ?>">
+  <span class="error">*<?php echo $_SESSION['deptErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-map-marker icon"></i>
-  <input class="input-field" type="text" name="location" placeholder="Location" value="<?php echo $location; ?>">
-  <span class="error">*<?php echo $locationErr; ?></span>
+  <input class="input-field" type="text" name="location" placeholder="Location" value="<?php echo $_SESSION['location']; ?>">
+  <span class="error">*<?php echo $_SESSION['locationErr']; ?></span>
 </div>
 
 <button type="submit" class="btn">Register</button>

@@ -40,6 +40,7 @@ input[name="logout"]{
 </head>
 <body>
 <?php
+session_start();
 include('session.php');
 ?>
 <form action="logout.php" method="POST">
@@ -66,7 +67,7 @@ include('session.php');
                 <td>'.$row1['phone'].'</td>
                 <td>'.$row2['dept'].'</td>
                 <td>'.$row2['location'].'</td>
-                <td><a href="edit_user.php?user_id='.$uid.'"> EDIT </a></td>
+                <td><a href="edit_user.php"> EDIT </a></td>
                 <form action="" method="POST" >
                 </form>
                 </tr>';

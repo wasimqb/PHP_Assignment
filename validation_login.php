@@ -1,4 +1,5 @@
 <?php
+session_start();
 // define variables and set to empty values
  $unameErr = $passErr = "";
 $uname = $pass = "";
@@ -22,9 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $passErr = "Password required";
     } else {
         $pass = md5(test_input($_POST["pass"]));
+        if($pass != $row['password']){
+            $passErr = "Invalid password";
+        }
     }
+    $_SESSION['uname'] = $uname;
+    $_SESSION['pass'] = $pass;
 
-    
+    $_SESSION['unameErr'] = $unameErr;
+    $_SESSION['passErr'] = $passErr;
+
+    if($unameErr == '' && $passErr == '')
+    {
+        header('location:sign_in.php');
+    }
+    else header('location:login.php');
 }
     
 

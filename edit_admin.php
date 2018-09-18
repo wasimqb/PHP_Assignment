@@ -71,6 +71,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 $con = mysqli_connect("localhost","root","wasim121","demo");
 
 session_start();
+if(!isset($_SESSION['user-name']))
+    header('location:logout.php');
 
 $uid = $_GET['uid'];
 $sql1 = "select * from users where user_id=".$uid;
@@ -88,51 +90,16 @@ $row2 = mysqli_fetch_assoc($rs2);
 // define variables and set to empty values
 
 // include('validation_edit_user');
-
-$deptErr = $locationErr = "";
 $name = $row1['name'];
-$dept = $row2['dept'];
-$location = $row2['location'];
-
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["dept"])) {
-        $deptErr = "Department is required";
-    } else {
-        $dept = test_input($_POST["dept"]);
-    }
-
-    if (empty($_POST["location"])) {
-        $locationErr = "Location is required";
-    } else {
-        $location = test_input($_POST["location"]);
-    }
-}
-
-
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-    
+$_SESSION['dept'] = $row2['dept'];
+$_SESSION['location'] = $row2['location'];
 
 ?>
 
 <center>
 <h1>Edit Profile</h1>
 <p><span class="">* required field</span></p>
-<form method="post" class="form" action="<?php if(!empty($_POST['dept']) && !empty($_POST['location']) )
-        {
-            echo "update_admin.php?uid=".$uid;
-        }
-        else {
-            echo "";
-            }
-            ?>" style="max-width:500px;margin:auto">
+<form method="post" class="form" action="<?php echo "validate_edit_admin.php?uid=".$uid;?>" style="max-width:500px;margin:auto">
 <div class="input-container">
   <i class="fa fa-user icon"></i>
   <input class="input-field" type="text" name="name" disabled="disabled" placeholder="Name" value="<?php echo $name; ?>">
@@ -141,14 +108,14 @@ function test_input($data)
 
 <div class="input-container">
   <i class="fa fa-simplybuilt icon"></i>
-  <input class="input-field" type="text" name="dept" placeholder="Department" value="<?php echo $dept; ?>">
-  <span class="error">*<?php echo $deptErr; ?></span>
+  <input class="input-field" type="text" name="dept" placeholder="Department" value="<?php echo $_SESSION['dept']; ?>">
+  <span class="error">*<?php echo $_SESSION['deptErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-map-marker icon"></i>
-  <input class="input-field" type="text" name="location" placeholder="Location" value="<?php echo $location; ?>">
-  <span class="error">*<?php echo $locationErr; ?></span>
+  <input class="input-field" type="text" name="location" placeholder="Location" value="<?php echo $_SESSION['location']; ?>">
+  <span class="error">*<?php echo $_SESSION['locationErr']; ?></span>
 </div>
 
 <button type="submit" class="btn">Update</button>

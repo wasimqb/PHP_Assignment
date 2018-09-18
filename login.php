@@ -77,31 +77,23 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <?php
 
-include 'validation_login.php';
 ?>
 
 <center>
 <div class="main_container">
 <h1>Login</h1>
-<form method="post" class="form" action="<?php if (!empty($_POST['uname']) && !empty($_POST['pass']) && $row) {
-
-    $_SESSION['uname'] = $uname;
-    $_SESSION['pass'] = $pass;
-    header("location:sign_in.php");
-} else {
-    echo "";
-}?>" style="max-width:500px;margin:auto">
+<form method="post" class="form" action="validation_login.php" style="max-width:500px;margin:auto">
 
 <div class="input-container">
   <i class="fa fa-user icon"></i>
-  <input class="input-field" type="text" name="uname" placeholder="Username" value="<?php echo $uname; ?>">
-  <span class="error"><?php echo "*".$unameErr; ?></span>
+  <input class="input-field" type="text" name="uname" placeholder="Username" value="<?php echo $_SESSION['uname']; ?>">
+  <span class="error"><?php echo "*".$_SESSION['unameErr']; ?></span>
 </div>
 
 <div class="input-container">
   <i class="fa fa-key icon"></i>
   <input class="input-field" type="password" name="pass" placeholder="Password" value="">
-  <span class="error"><?php echo "*".$passErr; ?></span>
+  <span class="error"><?php echo "*".$_SESSION['passErr']; ?></span>
 </div>
 
 

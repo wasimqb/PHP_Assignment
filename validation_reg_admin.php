@@ -97,9 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($nameErr == '' && $emailErr == '' && $unameErr == '' && $passErr == '' && $addrErr == ''
     && $fonErr == '' && $deptErr == '' && $locationErr == '')
     {
-        header('location:registration.php');
+        header('location:adding_user_admin.php');
     }
-    else header('location:register.php');
+    else header('location:add_user.php');
 }
     
 
