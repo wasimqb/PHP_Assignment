@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["pass"])) {
         $_SESSION['passErr'] = "Password required";
     } else {
-        $_SESSION['pass'] = md5(test_input($_POST["pass"]));
+        $_SESSION['pass'] = md5($_POST["pass"]);
     }
 
     if (empty($_POST["addr"])) {

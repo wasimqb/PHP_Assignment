@@ -103,7 +103,7 @@ $_SESSION['location'] = '';?>
 
 <div class="input-container">
   <i class="fa fa-key icon"></i>
-  <input class="input-field" type="password" name="pass" placeholder="Password" value="<?php echo $_SESSION['pass']; ?>">
+  <input class="input-field" type="password" name="pass" placeholder="Password" value="">
   <span class="error">*<?php echo $_SESSION['passErr']; ?></span>
 </div>
 

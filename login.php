@@ -71,7 +71,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     margin-top: 12%;
 }
 </style>
-<?php session_start();?>
+<?php session_start();
+?>
 </head>
 <body>
 

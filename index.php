@@ -74,6 +74,10 @@ body{
 </head>
 
 <body>
+<?php 
+session_start();
+session_unset();
+?>
     <center>
         <div class="centerDiv">
             
