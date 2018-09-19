@@ -83,13 +83,6 @@ $sql2 = "select * from employee where emp_uid = ".$uid ;
 $rs2 = mysqli_query($con, $sql2) or die(mysql_error());
 $row2 = mysqli_fetch_assoc($rs2);
 
-// if(!isset($_SESSION['user-name'])){
-//     header('location: index.php'); 
-//     mysqli_close($con); 
-//     }
-// define variables and set to empty values
-
-// include('validation_edit_user');
 $name = $row1['name'];
 $_SESSION['dept'] = $row2['dept'];
 $_SESSION['location'] = $row2['location'];

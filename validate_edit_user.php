@@ -62,9 +62,6 @@ if($_SESSION['deptErr']=='' && $_SESSION['locationErr']==''&& $_SESSION['nameErr
 else header('location:edit_user.php');
 }
 
-    
-
-
 function test_input($data)
 {
     $data = trim($data);

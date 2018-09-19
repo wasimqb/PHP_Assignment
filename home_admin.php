@@ -56,7 +56,6 @@ try {
     $sql = "SELECT a.user_id,a.username, a.name, a.email,a.address,a.phone, b.dept, b.location FROM users a
 				INNER JOIN employee b WHERE a.user_id = b.emp_uid ";
     $result = mysqli_query($con, $sql) or die(mysqli_error());
-    $result1 = mysqli_query($con, $sql) or die(mysqli_error());
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -84,16 +83,16 @@ try {
             </tr>
         <?php
                 
-                while ($row1 = mysqli_fetch_array($result1)) {
+                while ($row = mysqli_fetch_array($result)) {
                     echo '<tr>
-                    <td>' . $row1['name'].'</td>
-                    <td>' . $row1['email'] . '</td>
-                    <td>' . $row1['address'] . '</td>
-                    <td>' . $row1['phone'] . '</td>
-                    <td>' . $row1['dept'] . '</td>
-                    <td>' . $row1['location'] . '</td>
-                    <td><a href="edit_admin.php?uid=' . $row1['user_id'] . '"> EDIT </a></td>
-                    <td><a href="delete.php?uid=' . $row1['user_id'] . '"> DELETE </a></td>
+                    <td>' . $row['name'].'</td>
+                    <td>' . $row['email'] . '</td>
+                    <td>' . $row['address'] . '</td>
+                    <td>' . $row['phone'] . '</td>
+                    <td>' . $row['dept'] . '</td>
+                    <td>' . $row['location'] . '</td>
+                    <td><a href="edit_admin.php?uid=' . $row['user_id'] . '"> EDIT </a></td>
+                    <td><a href="delete.php?uid=' . $row['user_id'] . '"> DELETE </a></td>
                     </tr>';
                 }
         ?>

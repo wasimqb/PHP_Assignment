@@ -8,7 +8,6 @@ $user_check = $_SESSION['user-name'];
 $sql1 = "select * from users where username='".$user_check."'";
 $res1 = mysqli_query($con,$sql1);
 $row1 = mysqli_fetch_assoc($res1);
-$login_session =$row1['username'];
 $uid = $row1['user_id'];
 
 $sql2 = "select * from employee where emp_uid = ".$uid ;

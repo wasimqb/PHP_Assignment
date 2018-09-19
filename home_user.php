@@ -55,8 +55,7 @@ include('session.php');
 
 <center>
 <?php
-                    
-// Get images from the database
+
 $query = "SELECT * FROM image where emp_uid=".$_SESSION['uid'];
 $result= mysqli_query($con,$query);
 $rowcount=mysqli_num_rows($result);
@@ -64,41 +63,40 @@ if($rowcount > 0)
     while($row = mysqli_fetch_assoc($result)){
         $imageURL = 'uploads/'.$row["img_name"];
 ?>
-<div class="image"> <img src="<?php echo $imageURL; ?>" onerror="this.src='uploads/x.jpg'" alt="Hi" style="width:100%;height:100%;"/></div>
-                    
-                    <a href="delete_image.php">Delete your picture</a>
-                    <?php 
-                     }else{ ?>
-                     <div class="image"><img src="uploads/x.jpg" alt="Hi" style="width:150%;height:150%;"/></div>
-                        <form action="upload.php" method="post" enctype="multipart/form-data">
-    Select Image File to Upload:
-    <input type="file" name="file">
-    <input type="submit" name="submit" value="Upload">
-    <span class="error">*<?php echo $_SESSION['imageErr']; ?></span>
-</form>
-                    <?php } ?> 
+<div class="image"> <img src="<?php echo $imageURL; ?>" alt="Hi" style="width:100%;height:100%;"/></div>
+<a href="delete_image.php">Delete your picture</a>
+<?php 
+    }else{ ?>
+        <div class="image"><img src="uploads/x.jpg" alt="Hi" style="width:150%;height:150%;"/></div>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            Select Image File to Upload:
+            <input type="file" name="file">
+            <input type="submit" name="submit" value="Upload">
+            <span class="error">*<?php echo $_SESSION['imageErr']; ?></span>
+        </form>
+<?php } ?> 
 <div class="table-container">
     <table id="t01">
         
-            <tr >
-                <th >Name</th>
-                <th >Email</th>
-                <th >Address</th>
-                <th >Phone</th>
-                <th >Department</th>
-                <th >Location</th>
-                <th >Edit Profile</th>
-            </tr>
+        <tr >
+            <th >Name</th>
+            <th >Email</th>
+            <th >Address</th>
+            <th >Phone</th>
+            <th >Department</th>
+            <th >Location</th>
+            <th >Edit Profile</th>
+        </tr>
         <?php
-                echo '<tr >
-                <td>'.$row1['name'].'</td>
-                <td>'.$row1['email'].'</td>
-                <td>'.$row1['address'].'</td>
-                <td>'.$row1['phone'].'</td>
-                <td>'.$row2['dept'].'</td>
-                <td>'.$row2['location'].'</td>
-                <td><a href="edit_user.php"> EDIT </a></td>
-                </tr>';
+            echo '<tr >
+            <td>'.$row1['name'].'</td>
+            <td>'.$row1['email'].'</td>
+            <td>'.$row1['address'].'</td>
+            <td>'.$row1['phone'].'</td>
+            <td>'.$row2['dept'].'</td>
+            <td>'.$row2['location'].'</td>
+            <td><a href="edit_user.php"> EDIT </a></td>
+            </tr>';
         ?>
     </table>
     

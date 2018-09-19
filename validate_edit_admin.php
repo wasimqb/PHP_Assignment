@@ -5,7 +5,7 @@ $con = mysqli_connect("localhost","root","wasim121","demo");
 
 session_start();
 $uid = $_GET['uid'];
-$_SESSION['deptErr']='';
+$_SESSION['deptErr']=$_SESSION['locationErr']='';
 $deptErr = $locationErr ='';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,10 +31,6 @@ else{
     header('location:edit_admin.php?uid='.$uid);
 } 
 }
-
-    
-
-
 function test_input($data)
 {
     $data = trim($data);

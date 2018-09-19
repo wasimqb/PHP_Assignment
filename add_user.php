@@ -64,9 +64,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
     margin-left: 30%;
 }
 </style>
-<?php session_start();
+<?php 
+session_start();
 if(!isset($_SESSION['user-name']))
-header('location:logout.php');
+  header('location:logout.php');
 $_SESSION['uname'] = '';
 $_SESSION['name'] = '';
 $_SESSION['pass'] = '';

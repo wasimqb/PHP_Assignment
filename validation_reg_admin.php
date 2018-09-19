@@ -102,8 +102,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else header('location:add_user.php');
 }
     
-
-
 function test_input($data)
 {
     $data = trim($data);

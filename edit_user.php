@@ -68,7 +68,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <body>
 <?php session_start();
 if(!isset($_SESSION['user-name']))
-header('location:logout.php');
+    header('location:logout.php');
 ?>
 <center>
 <h1>Edit Profile</h1>

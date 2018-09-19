@@ -39,8 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else header('location:login.php');
 }
-    
-
 
 function test_input($data)
 {
