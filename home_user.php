@@ -49,32 +49,30 @@ table#t01 th {
 </head>
 <body>
 <?php
+$con = mysqli_connect("localhost","root","wasim121","demo");
+
 session_start();
-include('session.php');
+
+$uid = $_GET['uid'];
+$sql1 = "select * from users where user_id=".$uid;
+$res1 = mysqli_query($con,$sql1);
+$row1 = mysqli_fetch_assoc($res1);
+
+$sql2 = "select * from employee where emp_uid = ".$uid ;
+$rs2 = mysqli_query($con, $sql2) or die(mysql_error());
+$row2 = mysqli_fetch_assoc($rs2);
+
+echo '<center>';
+
+
+// $query = "SELECT * FROM image where emp_uid=".$uid;
+// $result= mysqli_query($con,$query);
+// $rowcount=mysqli_num_rows($result);
+// if($rowcount > 0)
+//     while($row = mysqli_fetch_assoc($result)){
+//         $imageURL = 'uploads/'.$row["img_name"];
 ?>
 
-<center>
-<?php
-
-$query = "SELECT * FROM image where emp_uid=".$_SESSION['uid'];
-$result= mysqli_query($con,$query);
-$rowcount=mysqli_num_rows($result);
-if($rowcount > 0)
-    while($row = mysqli_fetch_assoc($result)){
-        $imageURL = 'uploads/'.$row["img_name"];
-?>
-<div class="image"> <img src="<?php echo $imageURL; ?>" alt="Hi" style="width:100%;height:100%;"/></div>
-<a href="delete_image.php">Delete your picture</a>
-<?php 
-    }else{ ?>
-        <div class="image"><img src="uploads/x.jpg" alt="Hi" style="width:150%;height:150%;"/></div>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-            Select Image File to Upload:
-            <input type="file" name="file">
-            <input type="submit" name="submit" value="Upload">
-            <span class="error">*<?php echo $_SESSION['imageErr']; ?></span>
-        </form>
-<?php } ?> 
 <div class="table-container">
     <table id="t01">
         
