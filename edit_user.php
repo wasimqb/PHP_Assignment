@@ -9,7 +9,6 @@
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
-
 .input-container {
     display: -ms-flexbox; /* IE10 */
     display: flex;
@@ -26,17 +25,14 @@ body {font-family: Arial, Helvetica, sans-serif;}
     min-width: 50px;
     text-align: center;
 }
-
 .input-field {
     width: 100%;
     padding: 5px;
     outline: none;
 }
-
 .input-field:focus {
     border: 2px solid dodgerblue;
 }
-
 /* Set a style for the submit button */
 .btn {
     background-color: rgb(224, 75, 224);
@@ -46,6 +42,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
+}
+.btn_cancel {
+    background-color: rgb(224, 75, 224);
+    color: white;
+    padding: 10px 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    margin-top:5px;
 }
 .btn_login{
     background-color: rgb(224, 75, 224);
@@ -59,7 +65,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .btn:hover {
     opacity: 1;
 }
-
 .error {
     color: #FF0000;
     position: absolute;
@@ -73,17 +78,14 @@ session_start();
 if(!isset($_SESSION['user-name']))
     header('location:logout.php');
 $con = mysqli_connect("localhost","root","wasim121","demo");
-
 $user_check = $_SESSION['user-name'];
 $sql1 = "select * from users where username='".$user_check."'";
 $res1 = mysqli_query($con,$sql1);
 $row1 = mysqli_fetch_assoc($res1);
 $uid = $row1['user_id'];
-
 $sql2 = "select * from employee where emp_uid = ".$uid ;
 $rs2 = mysqli_query($con, $sql2) or die(mysql_error());
 $row2 = mysqli_fetch_assoc($rs2);
-
 ?>
 <center>
 <h1>Edit Profile</h1>
@@ -119,8 +121,13 @@ $row2 = mysqli_fetch_assoc($rs2);
 </div>
 
 <button type="submit" class="btn">Update</button>
-     
+<button type="button" class="btn_cancel" onclick="redirect_home()">Cancel</button>     
 </form>
+<script>
+function redirect_home(){
+    window.location.href="home_user.php?uid="+<?php echo $uid?>
+}
+</script>
 </center>
 </body>
 </html>

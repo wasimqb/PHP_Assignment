@@ -52,7 +52,9 @@ table#t01 th {
 $con = mysqli_connect("localhost","root","wasim121","demo");
 
 session_start();
-
+if(!isset($_SESSION['user-name']))
+    header('location:logout.php');
+    
 $uid = $_GET['uid'];
 $sql1 = "select * from users where user_id=".$uid;
 $res1 = mysqli_query($con,$sql1);
@@ -64,13 +66,6 @@ $row2 = mysqli_fetch_assoc($rs2);
 
 echo '<center>';
 
-
-// $query = "SELECT * FROM image where emp_uid=".$uid;
-// $result= mysqli_query($con,$query);
-// $rowcount=mysqli_num_rows($result);
-// if($rowcount > 0)
-//     while($row = mysqli_fetch_assoc($result)){
-//         $imageURL = 'uploads/'.$row["img_name"];
 ?>
 
 <div class="table-container">
