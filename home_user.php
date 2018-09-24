@@ -4,56 +4,17 @@
 <form action="logout.php" method="POST">
 	<input type="submit" class="logout" name="logout" value="LOGOUT" style=" float: right;align: top">
 </form>
-
-	<title>User Area</title>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-table {
-    width:90%;
-    margin-top: -15%;
-}
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 15px;
-    text-align: left;
-}
-table#t01 tr:nth-child(even) {
-    background-color: #eee;
-}
-table#t01 tr:nth-child(odd) {
-   background-color: #fff;
-}
-table#t01 th {
-    background-color: rgb(224, 75, 224);
-    color: white;
-}
-.table-container{
-    margin-top: 17%;
-}
-/* input[name="logout"]{
-    margin-right:0%;
-    margin-top:0%;
-    position:absolute;
-    color: black;
-} */
-.image{
-    width: 10%;
-    height: 10%;
-    margin-top: 0%
-}
-</style>
+<title>User Area</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="Styles/home_user.css">
 </head>
 <body>
 <?php
-$con = mysqli_connect("localhost","root","wasim121","demo");
-
 session_start();
 if(!isset($_SESSION['user-name']))
     header('location:logout.php');
+$con = mysqli_connect("localhost","root","wasim121","demo");
     
 $uid = $_GET['uid'];
 $sql1 = "select * from users where user_id=".$uid;
@@ -65,12 +26,9 @@ $rs2 = mysqli_query($con, $sql2) or die(mysql_error());
 $row2 = mysqli_fetch_assoc($rs2);
 
 echo '<center>';
-
 ?>
-
 <div class="table-container">
     <table id="t01">
-        
         <tr >
             <th >Name</th>
             <th >Email</th>
@@ -92,7 +50,6 @@ echo '<center>';
             </tr>';
         ?>
     </table>
-    
 </div>
 </center>
 </body>

@@ -3,7 +3,6 @@ session_start();
 $con = mysqli_connect("localhost","root","wasim121","demo") or die("Error " . mysqli_error($con));;
 
 if(isset($_POST['do_add_user'])){
-
   $uname = $_POST['uname'];
   $pass = $_POST['pass'];
   $email = $_POST['email'];
@@ -18,7 +17,6 @@ if(isset($_POST['do_add_user'])){
   $row2 = mysqli_fetch_assoc($result2);
 
   if(!$row2 && isset($name)){
-
     $sql = "INSERT INTO users (username, name, email, password, type, address, phone)
           VALUES ('".$uname."', '".$name."','".$email."','".md5($pass)."','user','".$addr."',".$fon.")";
     mysqli_query($con,$sql);
@@ -31,9 +29,7 @@ if(isset($_POST['do_add_user'])){
     mysqli_query($con,$sqlemp);
     echo "successful";
   }
-}
-
-else if(isset($_POST['do_check_uname'])){
+} else if(isset($_POST['do_check_uname'])){
   $uname = $_POST['uname'];
   $sql_uname1 = "select * from users where username = '".$uname."'";
   $result_uname1 = mysqli_query($con,$sql_uname1);
@@ -42,9 +38,7 @@ else if(isset($_POST['do_check_uname'])){
   if($row_uname1)
   echo ($row_uname1['username']);
   else echo "not exist";
-}
-
-else if(isset($_POST['do_check_email'])){
+} else if(isset($_POST['do_check_email'])){
   $email = $_POST['email'];
   $sql_email1 = "select * from users where email = '".$email."'";
   $result_email1 = mysqli_query($con,$sql_email1);
@@ -54,7 +48,6 @@ else if(isset($_POST['do_check_email'])){
   echo ($row_email1['email']);
   else echo "not exist";
 }
-
 mysqli_close($con);
 
  ?>

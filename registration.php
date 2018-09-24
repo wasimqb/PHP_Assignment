@@ -32,8 +32,8 @@ if(isset($_POST['do_register']))
             echo "successful";
       }
       session_unset();
-}
-else if(isset($_POST['do_check_uname'])){
+} else if(isset($_POST['do_check_uname'])){
+      
       $uname = $_POST['uname'];
       $sql_uname = "select * from users where username = '".$uname."'";
       $result_uname = mysqli_query($con,$sql_uname);
@@ -42,8 +42,8 @@ else if(isset($_POST['do_check_uname'])){
       if($row_uname)
       echo ($row_uname['username']);
       else echo "not exist";
-}
-else if(isset($_POST['do_check_email'])){
+} else if(isset($_POST['do_check_email'])){
+      
       $email = $_POST['email'];
       $sql_email = "select * from users where email = '".$email."'";
       $result_email = mysqli_query($con,$sql_email);
@@ -53,7 +53,6 @@ else if(isset($_POST['do_check_email'])){
       echo ($row_email['email']);
       else echo "not exist";
 }
-
 mysqli_close($con);
 
  ?>

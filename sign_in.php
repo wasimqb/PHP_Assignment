@@ -15,9 +15,7 @@ if(isset($_POST['do_login']))
         $row2 = mysqli_fetch_assoc($result2);
     }catch(Exception $e){
         echo $e->getMessage();
-    }
-
-    
+    } 
     if($row1)
     {
         $_SESSION['uid'] = $row1['user_id'];
@@ -30,7 +28,6 @@ if(isset($_POST['do_login']))
         $_SESSION['location'] = $row2['location'];
         $_SESSION['user-name'] = $row1['username'];
         $_SESSION['uname'] = $row1['username'];
-
         echo json_encode($row1);
     }
     else echo "fail";

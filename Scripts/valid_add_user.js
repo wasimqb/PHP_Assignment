@@ -138,7 +138,7 @@ function pass_strength() {
     }
     if (pass.length != 0 && pass.length > 6) {
         $("#pass").next("span").remove();
-        $('#pass').after('<span id="errorPass" class="error">Strong</span>');
+        $('#pass').after('<span id="errorPass" class="strongPass">Strong</span>');
     }
 }
 

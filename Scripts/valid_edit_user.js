@@ -34,7 +34,9 @@ function do_edit_user() {
         if (addr.length < 1) {
             $('#addr').after('<span id="errorUname" class="error">Address required</span>');
         }
-        if (fon.length != 10) {
+        if (fon.length < 1) {
+            $('#fon').after('<span id="errorUname" class="error">Phone number required</span>');
+        }else if(!isFon(fon)){
             $('#fon').after('<span id="errorUname" class="error">Phone number invalid</span>');
         }
         if (dept.length < 1) {
