@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="Scripts/valid_edit_admin.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style>
@@ -63,6 +65,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
     position: absolute;
     margin-left: 30%;
 }
+.btn_cancel {
+    background-color: rgb(224, 75, 224);
+    color: white;
+    padding: 10px 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    margin-top:5px;
+}
 </style>
 </head>
 <body>
@@ -82,38 +94,37 @@ $row1 = mysqli_fetch_assoc($res1);
 $sql2 = "select * from employee where emp_uid = ".$uid ;
 $rs2 = mysqli_query($con, $sql2) or die(mysql_error());
 $row2 = mysqli_fetch_assoc($rs2);
-
-$name = $row1['name'];
-$_SESSION['dept'] = $row2['dept'];
-$_SESSION['location'] = $row2['location'];
-
 ?>
 
 <center>
 <h1>Edit Profile</h1>
 <p><span class="">* required field</span></p>
-<form method="post" class="form" action="<?php echo "validate_edit_admin.php?uid=".$uid;?>" style="max-width:500px;margin:auto">
+<form method="post" class="form" onsubmit="return do_edit_admin(<?php echo $uid?>);" style="max-width:500px;margin:auto">
 <div class="input-container">
   <i class="fa fa-user icon"></i>
-  <input class="input-field" type="text" name="name" disabled="disabled" placeholder="Name" value="<?php echo $name; ?>">
+  <input class="input-field" type="text"  name="name" disabled="disabled" placeholder="Name" value="<?php echo $row1['name']; ?>">
 </div>
 
 
 <div class="input-container">
   <i class="fa fa-simplybuilt icon"></i>
-  <input class="input-field" type="text" name="dept" placeholder="Department" value="<?php echo $_SESSION['dept']; ?>">
-  <span class="error">*<?php echo $_SESSION['deptErr']; ?></span>
+  <input class="input-field" type="text" name="dept" id="dept" placeholder="Department" value="<?php echo $row2['dept']; ?>">
 </div>
 
 <div class="input-container">
   <i class="fa fa-map-marker icon"></i>
-  <input class="input-field" type="text" name="location" placeholder="Location" value="<?php echo $_SESSION['location']; ?>">
-  <span class="error">*<?php echo $_SESSION['locationErr']; ?></span>
+  <input class="input-field" type="text" name="location" id="location" placeholder="Location" value="<?php echo $row2['location']; ?>">
 </div>
 
 <button type="submit" class="btn">Update</button>
+<button type="button" class="btn_cancel" onclick="redirect_home()">Cancel</button>
      
 </form>
+<script>
+function redirect_home(){
+    window.location.href="home_admin.php?";
+}
+</script>
 </center>
 </body>
 </html>

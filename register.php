@@ -93,7 +93,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div class="input-container">
   <i class="fa fa-key icon"></i>
-  <input class="input-field" type="password" id="pass"name="pass" placeholder="Password" value="">
+  <input class="input-field" type="password" id="pass"name="pass" onkeyup="pass_strength()" placeholder="Password" value="">
 </div>
 
 <div class="input-container">

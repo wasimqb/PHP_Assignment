@@ -47,14 +47,7 @@ function do_edit_user() {
     return false;
 }
 
-function validatePhone(txtPhone) {
-    var a = txtPhone;
-    alert(a);
-    var filter = /^[0-9]{10}$/;
-    if (filter.test(a)) {
-        return true;
-    }
-    else {
-        return false;
-    }
+function isFon(fon) {
+    var regexfon = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
+    return regexfon.test(fon);
 }

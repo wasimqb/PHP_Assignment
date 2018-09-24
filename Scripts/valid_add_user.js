@@ -1,4 +1,4 @@
-function do_register() {
+function do_add_user() {
     $('span[id^="error"]').remove();
     var uname = $("#uname").val();
     var name = $("#name").val();
@@ -8,25 +8,24 @@ function do_register() {
     var fon = $("#fon").val();
     var dept = $("#dept").val();
     var location = $("#location").val();
-    
-    if(uname.length>=1){
+
+    if (uname.length >= 1) {
         var x = username_check();
         var uname_check = x.responseText;
     }
-    if(email.length>=1){
+    if (email.length >= 1) {
         var y = email_check();
         var em_check = y.responseText;
     }
     if (name != "" && fon != "" && dept != "" && addr != "" && location != "" && fon.length == 10 &&
         uname != "" && pass != "" && pass.length > 6 && email != "" && uname_check == "not exist" &&
-         em_check=="not exist" && isEmail(email) && isFon(fon) ) {
-            
-            $.ajax
+        em_check == "not exist" && isEmail(email) && isFon(fon)) {
+        $.ajax
             ({
                 type: 'post',
-                url: 'registration.php',
+                url: 'adding_user_admin.php',
                 data: {
-                    do_register: "do_register",
+                    do_add_user: "do_add_user",
                     uname: uname,
                     name: name,
                     email: email,
@@ -37,40 +36,40 @@ function do_register() {
                     location: location
                 },
                 success: function (response) {
-                    if(response == "successful"){
-                       window.location.href = "index.php";
+                    if (response == "successful") {
+                        window.location.href = "home_admin.php";
                     }
                 }
             });
     }
-    else{
+    else {
         if (name.length < 1) {
-            $('#name').after('<span id="errorName" class="error">Name required</span>');
+            $('#name').after('<span id="errorPass" class="error">Name required</span>');
         }
         if (uname.length < 1) {
             $('#uname').after('<span id="errorUname" class="error">Username required</span>');
         }
-        if (pass.length < 6) {
+        if (pass.length <= 6) {
             $('#pass').after('<span id="errorPass" class="error">Password must be atleast 6 characters</span>');
         }
         if (email.length < 1) {
-            $('#email').after('<span id="errorEmail" class="error">Email required</span>');
-        }else if(!isEmail(email)){
+            $('#email').after('<span id="errorPass" class="error">Email required</span>');
+        } else if (!isEmail(email)) {
             $('#email').after('<span id="errorEmail" class="error">Email invalid</span>');
         }
         if (addr.length < 1) {
-            $('#addr').after('<span id="errorAddr" class="error">Address required</span>');
+            $('#addr').after('<span id="errorUname" class="error">Address required</span>');
         }
         if (fon.length < 1) {
-            $('#fon').after('<span id="errorFon" class="error">Phone number required</span>');
-        }else if(!isFon(fon)){
+            $('#fon').after('<span id="errorUname" class="error">Phone number required</span>');
+        } else if (!isFon(fon)) {
             $('#fon').after('<span id="errorFon" class="error">Phone number invalid</span>');
         }
         if (dept.length < 1) {
-            $('#dept').after('<span id="errorDept" class="error">Department required</span>');
+            $('#dept').after('<span id="errorUname" class="error">Department required</span>');
         }
         if (location.length < 1) {
-            $('#location').after('<span id="errorLocation" class="error">Location required</span>');
+            $('#location').after('<span id="errorUname" class="error">Location required</span>');
         }
     }
     return false;
@@ -81,10 +80,10 @@ function username_check() {
     var uname = $("#uname").val();
     if (uname.length >= 1) {
         $("#uname").next("span").remove();
-       return $.ajax
+        return $.ajax
             ({
                 type: 'post',
-                url: 'registration.php',
+                url: 'adding_user_admin.php',
                 data: {
                     do_check_uname: "do_check_uname",
                     uname: uname
@@ -93,26 +92,26 @@ function username_check() {
                 success: function (response) {
                     var data = response;
                     if (data == "not exist") {
-                        $("#uname").after('<span id="error_available" class="error"></span>');
+                        $("#uname").after('<span id="erroravailable" class="error"></span>');
                     }
                     else {
                         $("#uname").after('<span id="error_available" class="error"> Username already taken</span>');
                     }
                 }
             });
-            return data;
+        return data;
     }
-};
+}
 
 //Function to check if email exists
 function email_check() {
     var email = $("#email").val();
-    if(email.length>1){
+    if (email.length > 1) {
         $("#email").next("span").remove();
         return $.ajax
             ({
                 type: 'post',
-                url: 'registration.php',
+                url: 'adding_user_admin.php',
                 data: {
                     do_check_email: "do_check_email",
                     email: email
@@ -121,23 +120,23 @@ function email_check() {
                 success: function (response) {
                     var data = response;
                     if (data != "not exist") {
-                        $("#email").after('<span id="error_available" class="error"> Email already exists</span>');
+                        $("#email").after('<span id="erroravailable" class="error"> Email already exists</span>');
                     }
                 }
             });
-            return data;
+        return data;
     }
-};   
+}
 
-function pass_strength(){
+function pass_strength() {
     var pass = $("#pass").val();
 
-    if(pass.length !=0 && pass.length < 6){
+    if (pass.length != 0 && pass.length < 6) {
         $("#pass").next("span").remove();
         $('#pass').after('<span id="errorPass" class="error">Weak</span>');
         return "low";
     }
-    if(pass.length !=0 && pass.length > 6){
+    if (pass.length != 0 && pass.length > 6) {
         $("#pass").next("span").remove();
         $('#pass').after('<span id="errorPass" class="error">Strong</span>');
     }
@@ -146,11 +145,9 @@ function pass_strength(){
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
-  }
+}
 
 function isFon(fon) {
     var regexfon = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
     return regexfon.test(fon);
 }
-
- // ((\+*)((0[ -]+)*|(91 )*)(\d{12}+|\d{10}+))|\d{5}([- ]*)\d{6}

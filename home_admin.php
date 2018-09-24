@@ -48,8 +48,9 @@ input[name="logout"]{
 </head>
 <body>
 <?php
-
-include('session.php');
+session_start();
+if(!isset($_SESSION['user-name']))
+    header('location:logout.php');
 try {
 
     $con = mysqli_connect("localhost", "root", "wasim121", "demo");

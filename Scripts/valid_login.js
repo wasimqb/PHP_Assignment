@@ -31,8 +31,8 @@ function do_login() {
     }
 
     else {
-        if (pass.length < 8) {
-            $('#password').after('<span id="errorPass" class="error">Password must be at least 8 characters long</span>');
+        if (pass.length < 1) {
+            $('#password').after('<span id="errorPass" class="error">Password required</span>');
         }
         if (uname.length < 1) {
             $('#uname').after('<span id="errorUname" class="error">Username required</span>');
