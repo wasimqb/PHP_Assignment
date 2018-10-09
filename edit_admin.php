@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<title>Edit Employee Details</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -35,8 +36,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     border: 2px solid dodgerblue;
 }
 
-/* Set a style for the submit button */
-.btn {
+/* Setamal123@gmail.comsubmit button */
+.btn {amal123@gmail.com
     background-color: rgb(224, 75, 224);
     color: white;
     padding: 10px 5px;
@@ -90,7 +91,7 @@ $_SESSION['location'] = $row2['location'];
 ?>
 
 <center>
-<h1>Edit Profile</h1>
+<h1>Edit Employee Details</h1>
 <p><span class="">* required field</span></p>
 <form method="post" class="form" action="<?php echo "validate_edit_admin.php?uid=".$uid;?>" style="max-width:500px;margin:auto">
 <div class="input-container">

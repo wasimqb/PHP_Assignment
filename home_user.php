@@ -40,10 +40,17 @@ table#t01 th {
     position:absolute;
     color: black;
 } */
+img{
+    margin-left: 35%;
+    max-width:100%;
+    max-height:100%;
+}
 .image{
-    width: 10%;
-    height: 10%;
-    margin-top: 0%
+    height: 180px;
+    width: 200px;
+}
+.image_fit{
+    object-fit: contain;
 }
 </style>
 </head>
@@ -65,18 +72,12 @@ if($rowcount > 0)
     while($row = mysqli_fetch_assoc($result)){
         $imageURL = 'uploads/'.$row["img_name"];
 ?>
-<div class="image"> <img src="<?php echo $imageURL; ?>" alt="Hi" style="width:100%;height:100%;"/></div>
-<a href="delete_image.php">Delete your picture</a>
+<div class="image"> <img class="image_fit" src="<?php echo $imageURL; ?>" alt="Hi" style="width:100%;height:100%;"/></div>
 <?php 
-    }else{ ?>
-        <div class="image"><img src="uploads/x.jpg" alt="Hi" style="width:150%;height:150%;"/></div>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-            Select Image File to Upload:
-            <input type="file" name="file">
-            <input type="submit" name="submit" value="Upload">
-            <span class="error">*<?php echo $_SESSION['imageErr']; ?></span>
-        </form>
-<?php } ?> 
+    }else{?>
+        <div class="image"><img class="image_fit" src="uploads/x.jpg" alt="Hi" style="width:150%;height:150%;"/></div>
+    <?php }?>
+
 <div class="table-container">
     <table id="t01">
         

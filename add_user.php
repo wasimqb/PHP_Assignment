@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<title>Add Employee</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -78,7 +79,6 @@ $_SESSION['dept'] = '';
 $_SESSION['location'] = '';?>
 </head>
 <body>
-
 <center>
 <h1>Add Employee Form</h1>
 <p><span class="">* required field</span></p>
@@ -132,8 +132,7 @@ $_SESSION['location'] = '';?>
   <span class="error">*<?php echo $_SESSION['locationErr']; ?></span>
 </div>
 
-<button type="submit" class="btn">Register</button>  
-      
+<button type="submit" class="btn">Register</button>   
 </form>
 </center>
 </body>

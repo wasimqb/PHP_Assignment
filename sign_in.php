@@ -2,11 +2,12 @@
 session_start();
 
 $con = mysqli_connect("localhost","root","wasim121","demo") or die("Error " . mysqli_error($con));;
-
 try{
     $sql1 = "select * from users where password ='".($_SESSION['pass'])."' AND username ='".$_SESSION['uname']."'";    
+    echo $sql1;
     $result1 = mysqli_query($con,$sql1);
     $row1 = mysqli_fetch_assoc($result1);
+    print_r($result1);
 
     $sql2 = "select * from employee where emp_uid =".$row1['user_id'];
     $result2 = mysqli_query($con,$sql2);

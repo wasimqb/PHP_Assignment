@@ -3,6 +3,7 @@ session_start();
 // Include the database configuration file
 $con = mysqli_connect("localhost","root","wasim121","demo");
 $statusMsg = '';
+$success = "";
 $uid = $_SESSION['uid'];
 
 // File upload path
@@ -31,7 +32,8 @@ $sql1 = "select * from image where emp_uid=".$uid;
                 $insert = mysqli_query($con,$update);
             }
             if($insert){
-                $statusMsg = "Upload successfull";
+                $statusMsg = "";
+                $success = "Upload successful";
             }else{
                 $statusMsg = "File upload failed, please try again.";
             } 
@@ -45,7 +47,8 @@ $sql1 = "select * from image where emp_uid=".$uid;
     $statusMsg = 'Please select a file to upload.';   
     }
 $_SESSION['imageErr'] = $statusMsg;
-header('location:home_user.php');
+$_SESSION['success'] = $success;
+header('location:edit_user.php');
 // Display status message
 echo $statusMsg;
 ?>

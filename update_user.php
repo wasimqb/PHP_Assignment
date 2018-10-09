@@ -11,8 +11,15 @@ include('session.php');
   $dept = $_SESSION['dept'];
   $location = $_SESSION['location'];
 
-    $update_sql = "UPDATE users SET name = '".$name."', password = '".$pass."', address = '".$addr."', phone = '".$fon."' WHERE username = '".$_SESSION['uname']."'";
-    echo $update_sql;
+  if($pass == "")
+  {
+    $update_sql = "UPDATE users SET name = '".$name."', address = '".$addr."', 
+                    phone = '".$fon."' WHERE username = '".$_SESSION['uname']."'";
+  }
+  else{
+    $update_sql = "UPDATE users SET name = '".$name."', password = '".$pass."', address = '".$addr."', 
+                  phone = '".$fon."' WHERE username = '".$_SESSION['uname']."'";
+  }
     mysqli_query($con,$update_sql);
     $update_sqlemp = "UPDATE employee SET dept = '".$dept."', location = '".$location."' WHERE emp_uid = ".$uid;
     mysqli_query($con,$update_sqlemp);

@@ -1,7 +1,8 @@
 <?php
 session_start();
+include('test_input.php');
 // define variables and set to empty values
- $unameErr = $passErr = "";
+$unameErr = $passErr = "";
 $uname = $pass = "";
 $con = mysqli_connect("localhost","root","wasim121","demo") or die("Error " . mysqli_error($con));;
 
@@ -14,9 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if (empty($_POST["uname"])) {
-        $unameErr = "Username Required";
-    } else {
+        $unameErr = "Username Required";    
+    }else {
         $uname = test_input($_POST["uname"]);
+        if($uname != $row['username']){
+            $unameErr = "Invalid username";
+        }
     }
 
     if (empty($_POST["pass"])) {
@@ -40,12 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else header('location:login.php');
 }
 
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+
 
 ?>

@@ -1,5 +1,7 @@
 <?php
 session_start();
+include('test_input.php');
+
 // define variables and set to empty values
 $nameErr = $emailErr = $unameErr = $passErr = $addrErr = $fonErr = $deptErr = $locationErr = "";
 $name = $email = $uname = $pass = $addr = $fon = $dept = $location = "";
@@ -102,12 +104,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else header('location:add_user.php');
 }
     
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
 mysqli_close($conn);
 ?>
